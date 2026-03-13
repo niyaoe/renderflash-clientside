@@ -1,0 +1,70 @@
+.rf-chat-card {
+  position: relative;        /* ⭐ IMPORTANT */
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 60px 18px 14px; /* extra right + bottom space for time */
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  margin: 10px 60px 10px 0px;
+
+}
+
+/* avatar */
+.rf-chat-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #333;
+  flex-shrink: 0;
+}
+
+/* message wrapper */
+.chat-outer {
+  width: 100%;
+}
+
+.rf-chat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.rf-chat-username {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c9b6ff;
+  margin-bottom: 2px;
+}
+
+.rf-chat-text {
+  font-size: 14px;
+  color: #e6e6e6;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* ⭐ TIME — fixed bottom right of card */
+.chat-time {
+  position: absolute;
+  right: 14px;
+  bottom: 6px;
+  font-size: 11px;
+  color: #777;
+}
+
+
+/* ==============mine=============== */
+
+/* my messages on right */
+.rf-chat-mine{
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+/* optional: hide avatar for own messages */
+.rf-chat-mine .rf-chat-avatar{
+  display: block;
+}
+

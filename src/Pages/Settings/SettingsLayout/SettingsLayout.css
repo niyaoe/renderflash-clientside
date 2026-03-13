@@ -1,0 +1,44 @@
+/* .rf-settings-wrapper {
+  margin-top: 15px;
+} */
+
+/* ===== TOP NAV ===== */
+.rf-settings-topnav {
+  display: flex;
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* TAB BUTTON */
+.rf-settings-tab {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 600;
+  transition: 0.25s;
+  border-radius: 8px;
+}
+
+.rf-settings-tab:hover {
+  color: white;
+}
+
+/* ACTIVE TAB */
+.rf-settings-tab.active {
+  background: #1c1c1c;
+  color: white;
+  border-bottom: 2px solid #621eff;
+}
+
+/* ===== CONTENT AREA ===== */
+.rf-settings-content {
+  margin-top: 12px;
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 20px;
+}

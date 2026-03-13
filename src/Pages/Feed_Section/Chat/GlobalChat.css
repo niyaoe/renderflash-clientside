@@ -1,0 +1,43 @@
+.rf-chat-section {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+.rf-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.rf-chat-input-area {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rf-chat-input {
+  font-family: "Poppins", sans-serif;
+  flex: 1;
+  padding: 12px;
+  background: #1c1c1c;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  
+}
+.rf-chat-input-area i{
+  padding: 10px;
+  border: #1c1c1c 1px solid;
+  border-radius: 10px;
+
+}
+.rf-chat-input-area i:hover{
+  background-color: #1c1c1c;
+}
+
+
+
+
+

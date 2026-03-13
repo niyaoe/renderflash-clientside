@@ -1,0 +1,190 @@
+.rf-account-settings {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* TITLE */
+.rf-settings-title {
+  margin-bottom: 20px;
+}
+
+/* PROFILE PIC SECTION */
+.rf-profile-pic-section{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.rf-profile-preview{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #222;
+  flex-shrink:0;
+}
+
+.rf-username-input{
+  width: 100%;
+  flex:1;
+  background:#151515;
+  border:1px solid #222;
+  border-radius:8px;
+  padding:10px;
+  color:white;
+  font-family: inherit;
+}
+
+.rf-upload-btn{
+  background:#1c1c1c;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  color:#ddd;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.rf-upload-btn:hover{
+  background:#262626;
+}
+
+/* FORM */
+.rf-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rf-form-group label {
+  font-size: 14px;
+  color: #bbb;
+}
+
+.rf-form-group input,
+.rf-form-group textarea,
+.rf-form-group select {
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  font-family: inherit;
+}
+
+.rf-form-group textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.rf-form-group select[multiple] {
+  height: 100px;
+}
+
+/* APPLY BUTTON */
+.rf-apply-btn {
+  font-family: "Poppins", sans-serif;
+  background: #621eff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rf-apply-btn:hover {
+  background: #7c3cff;
+}
+
+/* CHIP CONTAINER */
+.rf-software-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* SINGLE CHIP */
+.rf-chip {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #222;
+  background: #151515;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* HOVER */
+.rf-chip:hover {
+  background: #1c1c1c;
+}
+
+/* ACTIVE CHIP */
+.rf-chip.active {
+  background: #621eff;
+  border-color: #621eff;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .rf-profile-pic-section {
+    /* flex-direction: column; */
+    align-items: center;
+  }
+
+  .rf-profile-preview {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+
+/* =================latest software===================== */
+
+/* SELECT */
+.rf-software-select {
+  margin-top: 10px;
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+}
+
+/* SELECTED CHIP CONTAINER */
+.rf-selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* CHIP */
+.rf-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #621eff;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* REMOVE X */
+.rf-chip-remove {
+  cursor: pointer;
+  font-weight: bold;
+}
+

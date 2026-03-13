@@ -1,0 +1,228 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.rf-wrapper {
+  /* font-family: "Segoe UI", sans-serif; */
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+.rf-header {
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+}
+
+.rf-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.rf-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #621eff;
+  letter-spacing: 1px;
+}
+
+.rf-nav-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.rf-lang-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.rf-language {
+  padding: 7px 32px 7px 12px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  transition: all 0.25s ease;
+}
+
+/* custom arrow */
+.rf-lang-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(255, 255, 255);
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.rf-language:hover {
+  border-color: white;
+}
+
+.rf-language option {
+  background: #111111;
+  color: white;
+  
+}
+
+.rf-signin-btn {
+  background-color: #621eff;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.rf-signin-btn:hover {
+  background-color: #621effcc;
+}
+
+/* ===== HERO ===== */
+.rf-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  background: #101229;
+  /* background: url("../../assets/icons&images/Cover/cover.png") */
+    /* no-repeat center center/cover; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.rf-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+
+.rf-hero-content {
+  position: relative;
+  max-width: 650px;
+  width: 100%;
+  z-index: 5;
+}
+
+/* TEXT */
+.rf-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.rf-subtitle {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.rf-desc {
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* INPUT GROUP (STACKED FOR MOBILE) */
+/* .rf-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rf-email-input {
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  width: 100%;
+} */
+
+/* .rf-get-started {
+  padding: 14px;
+  font-size: 15px;
+  background-color: #621eff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rf-get-started:hover {
+  background-color: #cc0000;
+} */
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+  .rf-logo {
+    font-size: 26px;
+  }
+
+  .rf-title {
+    font-size: 42px;
+  }
+
+  .rf-subtitle {
+    font-size: 20px;
+  }
+
+  .rf-desc {
+    font-size: 16px;
+  }
+
+  .rf-input-group {
+    flex-direction: row;
+  }
+
+  .rf-email-input {
+    flex: 1;
+  }
+
+  .rf-get-started {
+    width: auto;
+    padding: 14px 22px;
+  }
+
+  .rf-navbar {
+    padding: 20px 10%;
+  }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1200px) {
+  .rf-title {
+    font-size: 56px;
+  }
+
+  .rf-hero-content {
+    max-width: 800px;
+  }
+}

@@ -1,0 +1,184 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sign-switch{
+  text-decoration: none;
+  color: white;
+}
+
+.loginPage-title{
+  text-decoration: none;
+}
+
+.rf-login-wrapper {
+  min-height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  /* font-family: 'Segoe UI', sans-serif; */
+  color: white;
+  position: relative;
+}
+
+/* DARK OVERLAY */
+.rf-login-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 0;
+}
+
+/* ===== HEADER ===== */
+.rf-login-header {
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.rf-login-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #621eff;
+  letter-spacing: 1px;
+  
+}
+
+/* ===== CENTER CONTAINER ===== */
+.rf-login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== CARD ===== */
+.rf-login-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 30px 25px;
+  border-radius: 8px;
+}
+
+.rf-login-title {
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* ===== FORM ===== */
+.rf-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rf-login-input {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  padding: 14px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #333;
+  color: white;
+}
+
+.rf-login-input::placeholder {
+  color: #aaa;
+}
+
+.rf-login-btn {
+  font-family: "Poppins", sans-serif;
+  padding: 14px;
+  background-color: #621eff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rf-login-btn:hover {
+  background-color: #621effcc;
+}
+
+/* OPTIONS */
+.rf-login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.rf-login-remember {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.rf-login-help {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.rf-login-help:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+.rf-login-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.rf-login-signup {
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+
+  .rf-login-logo {
+    font-size: 28px;
+  }
+
+  .rf-login-card {
+    padding: 40px;
+  }
+
+  .rf-login-title {
+    font-size: 30px;
+  }
+
+  .rf-login-input {
+    font-size: 16px;
+  }
+
+  .rf-login-btn {
+    font-size: 16px;
+  }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1200px) {
+
+  .rf-login-card {
+    max-width: 450px;
+  }
+}

@@ -1,0 +1,22 @@
+.rf-search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rf-search-input {
+  font-family: "Poppins", sans-serif;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #1c1c1c;
+  color: white;
+}
+
+.rf-search-placeholder {
+  background: #151515;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  color: #bbb;
+}
