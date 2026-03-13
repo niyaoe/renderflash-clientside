@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileCard from "../../Blits/ProfileCard";
 import "./About.css";
-// import AboutPic from "../../assets/icons&images/About/AboutPhoto.jpg"
+import AboutPic from "../../assets/icons&images/About/aboutPhoto.jpg"
 
 const About = () => {
   return (

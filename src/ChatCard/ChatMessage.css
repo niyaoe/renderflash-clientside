@@ -1,13 +1,12 @@
 .rf-chat-card {
-  position: relative;        /* ⭐ IMPORTANT */
+  position: relative; /* ⭐ IMPORTANT */
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 12px 60px 18px 14px; /* extra right + bottom space for time */
   border: 1px solid #1f1f1f;
   border-radius: 20px;
-  margin: 10px 60px 10px 0px;
-
+  margin: 10px 0px;
 }
 
 /* avatar */
@@ -53,18 +52,16 @@
   color: #777;
 }
 
-
 /* ==============mine=============== */
 
 /* my messages on right */
-.rf-chat-mine{
+.rf-chat-mine {
   justify-content: flex-end;
   flex-direction: row-reverse;
   text-align: right;
 }
 
 /* optional: hide avatar for own messages */
-.rf-chat-mine .rf-chat-avatar{
+.rf-chat-mine .rf-chat-avatar {
   display: block;
 }
-
