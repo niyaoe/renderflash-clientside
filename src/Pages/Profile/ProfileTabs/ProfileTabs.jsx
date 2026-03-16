@@ -13,7 +13,7 @@ export default function ProfileTabs() {
             isActive ? "rf-tab rf-tab-active" : "rf-tab"
           }
         >
-          Your Posts
+          Your Edits
         </NavLink>
 
         <NavLink

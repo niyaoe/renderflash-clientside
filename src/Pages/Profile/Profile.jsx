@@ -22,8 +22,8 @@ const Profile = () => {
 
                 <div className="profile-stats">
                   <div className="stat">
-                    <span className="stat-number">54</span>
-                    <span className="stat-label">Posts</span>
+                    <span className="stat-number">5</span>
+                    <span className="stat-label">Edits</span>
                   </div>
 
                   <div className="stat">
