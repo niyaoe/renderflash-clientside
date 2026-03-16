@@ -1,0 +1,115 @@
+/* main container */
+.rf-chat-container{
+  display:flex;
+  flex-direction:column;
+  height:calc(100vh - 90px);
+  overflow:hidden;
+}
+
+/* messages area */
+.rf-chat-messages{
+  flex:1;
+  overflow-y:auto;
+  padding:10px 4px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* message row */
+.rf-chat-message{
+  display:flex;
+  gap:8px;
+  align-items:flex-end;
+}
+
+/* my message */
+.rf-chat-mine{
+  justify-content:flex-end;
+}
+
+/* avatar */
+.rf-chat-avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* message bubble */
+.rf-chat-bubble{
+  max-width:65%;
+  background:#1c1c1c;
+  padding:10px 12px;
+  border-radius:12px;
+  color:white;
+  font-size:14px;
+}
+
+/* username */
+.rf-chat-user{
+  font-size:12px;
+  color:#bbb;
+  display:block;
+  margin-bottom:2px;
+}
+
+/* text */
+.rf-chat-text{
+  margin:0;
+}
+
+/* time */
+.rf-chat-time{
+  font-size:11px;
+  color:#777;
+  margin-top:4px;
+  display:block;
+}
+
+/* my message bubble */
+.rf-chat-mine .rf-chat-bubble{
+  background:#621eff;
+}
+
+/* input wrapper */
+.rf-chat-input-wrapper{
+  display:flex;
+  gap:8px;
+  padding:10px 0;
+  border-top:1px solid #1c1c1c;
+}
+
+/* input */
+.rf-chat-input{
+  flex:1;
+  padding:12px;
+  background:#1c1c1c;
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-family:"Poppins",sans-serif;
+}
+
+/* send button */
+.rf-chat-send-btn{
+  padding:10px 14px;
+  background:#1c1c1c;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+}
+
+.rf-chat-send-btn:hover{
+  background:#262626;
+}
+
+/* mobile */
+@media (max-width:600px){
+
+  .rf-chat-bubble{
+    max-width:75%;
+  }
+
+}

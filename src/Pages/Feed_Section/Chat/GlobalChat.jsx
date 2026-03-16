@@ -1,6 +1,5 @@
-import "./GlobalChat.css";
-import ChatMessage from "../../../ChatCard/ChatMessage";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import "./RFGlobalChat.css";
 
 export default function GlobalChat() {
 
@@ -10,29 +9,35 @@ export default function GlobalChat() {
       user: "editwizard",
       message: "Anyone exporting 4K reels without quality loss?",
       avatar: "https://i.pravatar.cc/100?img=21",
-      time: "9:12pm",
+      time: "9:12 PM",
       isMine: false,
     },
     {
       id: 2,
       user: "niyas.cut",
-      message: "Try 60fps + VBR 2 pass. Works smooth for me.",
-      avatar: "https://i.pravatar.cc/100?img=33",
-      time: "9:13pm",
+      message: "Try 60fps + VBR 2 pass.",
+      avatar: "https://i.pravatar.cc/100?img=32",
+      time: "9:13 PM",
+      isMine: true,
+    },
+      {
+      id: 3,
+      user: "snehasuseel",
+      message: "Hello guys",
+      avatar: "https://i.pravatar.cc/100?img=24",
+      time: "9:12 PM",
       isMine: false,
     },
+    
   ]);
 
   const [input, setInput] = useState("");
 
-  /* scroll to bottom */
+  const chatEndRef = useRef(null);
+
+  /* auto scroll to latest message */
   useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "auto",
-      });
-    }, 0);
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   /* send message */
@@ -59,45 +64,73 @@ export default function GlobalChat() {
 
     socket.emit("send-message", newMessage)
 
-    OR
+    or
 
     axios.post("/api/chat/send", newMessage)
     */
   };
 
-  /* enter key send */
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      sendMessage();
-    }
+    if (e.key === "Enter") sendMessage();
   };
 
   return (
-    <div className="rf-chat-section">
-      
+    <div className="rf-chat-container">
+
+      {/* messages */}
       <div className="rf-chat-messages">
+
         {messages.map((msg) => (
-          <ChatMessage
+          <div
             key={msg.id}
-            {...msg}
-            isMine={msg.isMine}
-          />
+            className={`rf-chat-message ${msg.isMine ? "rf-chat-mine" : ""}`}
+          >
+
+            {!msg.isMine && (
+              <img
+                src={msg.avatar}
+                className="rf-chat-avatar"
+                alt="avatar"
+              />
+            )}
+
+            <div className="rf-chat-bubble">
+
+              {!msg.isMine && (
+                <span className="rf-chat-user">{msg.user}</span>
+              )}
+
+              <p className="rf-chat-text">{msg.message}</p>
+
+              <span className="rf-chat-time">{msg.time}</span>
+
+            </div>
+
+          </div>
         ))}
+
+        <div ref={chatEndRef}></div>
+
       </div>
 
-      <div className="rf-chat-input-area">
+      {/* input */}
+      <div className="rf-chat-input-wrapper">
+
         <input
           className="rf-chat-input"
-          placeholder="Send Anything..."
+          placeholder="Send anything..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
         />
 
-        <i
-          className="bi bi-send-fill rf-comment-send"
+        <button
+          className="rf-chat-send-btn"
           onClick={sendMessage}
-        ></i>
+        >
+          <i className="bi bi-send-fill"></i>
+        </button>
+
       </div>
 
     </div>
