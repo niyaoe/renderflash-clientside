@@ -6,7 +6,7 @@ export default function GlobalChat() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      user: "editwizard",
+      user: "snehasuseel",
       message: "Anyone exporting 4K reels without quality loss?",
       avatar: "https://i.pravatar.cc/100?img=21",
       time: "9:12 PM",
@@ -22,7 +22,7 @@ export default function GlobalChat() {
     },
       {
       id: 3,
-      user: "snehasuseel",
+      user: "editwizard",
       message: "Hello guys",
       avatar: "https://i.pravatar.cc/100?img=24",
       time: "9:12 PM",
