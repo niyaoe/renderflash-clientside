@@ -18,7 +18,7 @@ const Profile = () => {
               />
 
               <div className="profile-info">
-                <h2 className="profile-username">sameer_fx</h2>
+                <h2 className="profile-username">snehasuseel</h2>
 
                 <div className="profile-stats">
                   <div className="stat">
@@ -59,12 +59,11 @@ const Profile = () => {
 
           {/* Bio Section */}
           <div className="profile-bio">
-            <h4 className="profile-name">Sameer Nalakath</h4>
+            <h4 className="profile-name">Sneha S</h4>
             <p>Adobe AfterEffects</p>
             <p>CapCut</p>
           </div>
           {/* POSTS / SAVED TABS */}
-          
         </div>
       </div>
       <ProfileTabs />

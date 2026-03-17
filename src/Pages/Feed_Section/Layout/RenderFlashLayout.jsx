@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineDynamicFeed } from "react-icons/md";
 import { RiGlobalFill } from "react-icons/ri";
-import { ImProfile } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
 import "./RenderFlashLayout.css";
 
 export default function RenderFlashLayout() {
@@ -40,7 +40,7 @@ export default function RenderFlashLayout() {
               <RiGlobalFill />
             </NavLink>
             <NavLink to="profile" className="rf-tab-btn">
-              <ImProfile />
+              <CgProfile />
             </NavLink>
           </div>
         </div>
