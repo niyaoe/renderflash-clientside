@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AccountSettings.css";
 
 export default function AccountSettings() {
+  const navigate = useNavigate();
+  
   const [form, setForm] = useState({
     email: "",
     privateAccount: false,
@@ -22,6 +24,11 @@ export default function AccountSettings() {
     e.preventDefault();
 
     console.log(form); // API ready
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // remove JWT
+    navigate("/login"); // go to login page
   };
 
   return (
@@ -64,7 +71,10 @@ export default function AccountSettings() {
         </div>
 
         {/* CHANGE PASSWORD NAV */}
-        <Link to="/main/profile/settings/change-password" className="rf-settings-nav">
+        <Link
+          to="/main/profile/settings/change-password"
+          className="rf-settings-nav"
+        >
           Change Password
           <i className="bi bi-chevron-right"></i>
         </Link>
@@ -72,6 +82,9 @@ export default function AccountSettings() {
         {/* APPLY BUTTON */}
         <button className="rf-apply-btn" type="submit">
           Save Changes
+        </button>
+        <button className="rf-logout-btn" onClick={handleLogout}>
+          Log Out
         </button>
       </form>
     </div>

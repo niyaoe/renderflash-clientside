@@ -1,95 +1,109 @@
-.rf-account-settings{
-  max-width:600px;
-  margin:auto;
+.rf-account-settings {
+  max-width: 600px;
+  margin: auto;
 }
 
 /* title */
-.rf-settings-title{
-  margin-bottom:20px;
+.rf-settings-title {
+  margin-bottom: 20px;
 }
 
 /* form */
-.rf-settings-form{
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+.rf-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 /* form group */
-.rf-form-group{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+.rf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.rf-form-group label{
-  color:#bbb;
-  font-size:14px;
+.rf-form-group label {
+  color: #bbb;
+  font-size: 14px;
 }
 
-.rf-form-group input{
-  background:#151515;
-  border:1px solid #222;
-  border-radius:8px;
-  padding:10px;
-  color:white;
-  font-family:inherit;
+.rf-form-group input {
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  font-family: inherit;
 }
 
 /* toggle */
-.rf-settings-toggle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border:1px solid #222;
-  padding:12px;
-  border-radius:8px;
-  background:#151515;
+.rf-settings-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #222;
+  padding: 12px;
+  border-radius: 8px;
+  background: #151515;
 }
 
 /* apply button */
-.rf-apply-btn{
-  background:#621eff;
-  border:none;
-  padding:12px;
-  border-radius:8px;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
+.rf-apply-btn {
+  background: #621eff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rf-logout-btn {
+  font-family: "Poppins", sans-serif;
+  background: transparent;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: #222 1px solid;
 }
 
-.rf-apply-btn:hover{
-  background:#7c3cff;
+.rf-apply-btn:hover {
+  background: #7c3cff;
+}
+.rf-logout-btn:hover {
+  background: #222;
 }
 
 /* delete */
-.rf-danger-btn{
-  background:#1a0000;
-  border:1px solid #ff3b3b;
-  padding:12px;
-  border-radius:8px;
-  color:#ff4d4d;
-  cursor:pointer;
+.rf-danger-btn {
+  background: #1a0000;
+  border: 1px solid #ff3b3b;
+  padding: 12px;
+  border-radius: 8px;
+  color: #ff4d4d;
+  cursor: pointer;
 }
 
-.rf-danger-btn:hover{
-  background:#240000;
+.rf-danger-btn:hover {
+  background: #240000;
 }
 
 /* SETTINGS NAV LINK */
-.rf-settings-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px;
-  border:1px solid #222;
-  border-radius:8px;
-  background:#151515;
-  text-decoration:none;
-  color:#ddd;
-  transition:0.2s;
+.rf-settings-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background: #151515;
+  text-decoration: none;
+  color: #ddd;
+  transition: 0.2s;
 }
 
-.rf-settings-nav:hover{
-  background:#1c1c1c;
+.rf-settings-nav:hover {
+  background: #1c1c1c;
 }

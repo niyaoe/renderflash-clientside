@@ -1,13 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RenderFlashLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import TargetCursor from "../../Blits/TargetCursor";
+import axios from "axios";
 
 const RenderFlashLogin = () => {
+
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5002/api/auth/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        }
+      );
+
+      // store token
+      localStorage.setItem("token", res.data.token);
+
+      // redirect after login
+      navigate("/main/profile");
+
+    } catch (err) {
+      console.log(err.response?.data || err.message);
+      alert(err.response?.data?.message || "Login failed");
+    }
+  };
+
   return (
     <div className="rf-login-wrapper">
-      {/* BLITS */}
+
       <TargetCursor
         spinDuration={2}
         hideDefaultCursor
@@ -15,41 +54,46 @@ const RenderFlashLogin = () => {
         hoverDuration={0.2}
       />
 
-      {/* LOGIN CARD */}
       <div className="rf-login-container">
         <div className="rf-login-card">
+
           <Link className="loginPage-title" to="/">
             <h2 className="rf-login-logo cursor-target">renderFlash</h2>
           </Link>
 
           <h2 className="rf-login-title">Sign In</h2>
 
-          <form className="rf-login-form">
+          <form className="rf-login-form" onSubmit={handleSubmit}>
+
             <div className="rf-login-field">
               <input
                 type="email"
-                placeholder="Email or phone number"
+                name="email"
+                placeholder="Email"
                 className="rf-login-input cursor-target"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
 
             <div className="rf-login-field">
               <input
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="rf-login-input cursor-target"
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
 
             <button
               type="submit"
               className="rf-login-btn cursor-target"
-              onClick={() => {
-                navigate("/main");
-              }}
             >
               Sign In
             </button>
+
           </form>
 
           <div className="rf-login-footer">
@@ -62,6 +106,7 @@ const RenderFlashLogin = () => {
               </span>
             </p>
           </div>
+
         </div>
       </div>
     </div>
