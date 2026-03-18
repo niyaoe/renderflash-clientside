@@ -16,8 +16,141 @@ export default function EditProfile() {
   const token = localStorage.getItem("token");
 
   const countries = [
-    "India", "United States", "United Kingdom", "Canada", "Australia",
-    "Germany", "France", "UAE", "Saudi Arabia", "Japan", "China"
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Congo",
+    "Costa Rica",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Dominican Republic",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Estonia",
+    "Ethiopia",
+    "Finland",
+    "France",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Greenland",
+    "Guatemala",
+    "Haiti",
+    "Honduras",
+    "Hong Kong",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Libya",
+    "Lithuania",
+    "Luxembourg",
+    "Malaysia",
+    "Maldives",
+    "Mexico",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Morocco",
+    "Myanmar",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Nigeria",
+    "North Korea",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Panama",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Saudi Arabia",
+    "Serbia",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Somalia",
+    "South Africa",
+    "South Korea",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Tajikistan",
+    "Thailand",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Ukraine",
+    "United Arab Emirates",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Uzbekistan",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe",
   ];
 
   const softwares = [
@@ -28,23 +161,53 @@ export default function EditProfile() {
     "CapCut",
     "Filmora",
     "Vegas Pro",
+    "HitFilm",
+    "Lightworks",
+    "Shotcut",
+    "OpenShot",
+    "Kdenlive",
     "Blender",
+    "Avid Media Composer",
+    "Pinnacle Studio",
+    "Corel VideoStudio",
+    "Magix Movie Edit Pro",
+    "CyberLink PowerDirector",
+    "Movavi Video Editor",
+    "VSDC Video Editor",
+    "Edius",
+    "Apple iMovie",
+    "Clipchamp",
+    "InShot",
     "VN Video Editor",
+    "LumaFusion",
     "Alight Motion",
+    "Node Video",
+    "VideoLeap",
+    "KineMaster",
+    "Splice",
+    "ActionDirector",
+    "Adobe Premiere Rush",
+    "DaVinci Resolve Studio",
+    "HitPaw Video Editor",
+    "Animotica",
+    "WeVideo",
+    "Kapwing",
+    "Descript",
+    "Runway ML",
+    "Topaz Video AI",
+    "HandBrake",
+    "FFmpeg",
   ];
 
   // 🔥 FETCH USER DATA
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5002/api/user/me",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await axios.get("http://localhost:5002/api/user/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         const user = res.data;
 
@@ -57,7 +220,6 @@ export default function EditProfile() {
 
         setSelectedSoftwares(user.softwares || []);
         setPreview(user.avatar || null);
-
       } catch (err) {
         console.log(err);
       }
@@ -81,9 +243,7 @@ export default function EditProfile() {
   };
 
   const removeSoftware = (software) => {
-    setSelectedSoftwares((prev) =>
-      prev.filter((item) => item !== software)
-    );
+    setSelectedSoftwares((prev) => prev.filter((item) => item !== software));
   };
 
   // 🔥 IMAGE PREVIEW
@@ -111,11 +271,10 @@ export default function EditProfile() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       alert("Profile Updated");
-
     } catch (err) {
       console.log(err);
       alert("Update failed");
@@ -156,7 +315,6 @@ export default function EditProfile() {
 
       {/* FORM */}
       <form className="rf-settings-form" onSubmit={handleSubmit}>
-
         {/* NAME */}
         <div className="rf-form-group">
           <label>Name</label>
@@ -238,7 +396,6 @@ export default function EditProfile() {
         <button type="submit" className="rf-apply-btn">
           Apply Changes
         </button>
-
       </form>
     </div>
   );
