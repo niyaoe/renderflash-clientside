@@ -33,7 +33,7 @@
 /* Username */
 .profile-username {
   font-size: 18px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 /* Stats */
@@ -60,7 +60,7 @@
 
 /* Bio */
 .profile-bio {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .profile-name {
@@ -68,14 +68,7 @@
   margin-bottom: 5px;
 }
 
-.profile-bio p {
-  font-size: 13px;
-  color: #bbb;
-  line-height: 1.4;
-}
-
-
-.outer-profile{
+.outer-profile {
   display: flex;
   justify-content: space-between;
 }
@@ -83,10 +76,10 @@
 
 .profile-right {
   display: flex;
-  flex-direction: column;   /* stack icons vertically */
+  flex-direction: column; /* stack icons vertically */
   justify-content: flex-end; /* push icons downward */
   align-items: center;
-  gap: 12px;                /* clean spacing */
+  gap: 12px; /* clean spacing */
 }
 
 /* make icons bigger & cleaner */
@@ -119,7 +112,6 @@
 /* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
   .profile-right {
-    
     justify-content: flex-end;
   }
 
@@ -130,5 +122,22 @@
 
   .profile-settings-link i {
     font-size: 20px;
+    font-weight: normal;
   }
+}
+
+.country-p {
+  font-size: 10px;
+  color: #aaa;
+}
+
+.bio-p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.software-p {
+  font-size: 13px;
+  color: #621eff;
+  line-height: 1.4;
 }

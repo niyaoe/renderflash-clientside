@@ -5,7 +5,6 @@ import ProfileTabs from "./ProfileTabs/ProfileTabs";
 import axios from "axios";
 
 const Profile = () => {
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -20,7 +19,6 @@ const Profile = () => {
         });
 
         setUser(res.data);
-
       } catch (err) {
         console.log(err);
       }
@@ -35,19 +33,18 @@ const Profile = () => {
     <div>
       <div className="profile-section">
         <div className="profile-card">
-
           {/* Top Section */}
           <div className="outer-profile">
-
             <div className="profile-top">
-              <img
-                src={user.avatar}
-                alt="profile"
-                className="profile-image"
-              />
+              <img src={user.avatar} alt="profile" className="profile-image" />
 
               <div className="profile-info">
-                <h2 className="profile-username">{user.username}</h2>
+                <h2 className="profile-username">
+                  {user.username}
+                  {user.country && (
+                    <span className="country-p">{user.country}</span>
+                  )}
+                </h2>
 
                 <div className="profile-stats">
                   <div className="stat">
@@ -56,12 +53,16 @@ const Profile = () => {
                   </div>
 
                   <div className="stat">
-                    <span className="stat-number">{user.followers?.length || 0}</span>
+                    <span className="stat-number">
+                      {user.followers?.length || 0}
+                    </span>
                     <span className="stat-label">Fans</span>
                   </div>
 
                   <div className="stat">
-                    <span className="stat-number">{user.following?.length || 0}</span>
+                    <span className="stat-number">
+                      {user.following?.length || 0}
+                    </span>
                     <span className="stat-label">Following</span>
                   </div>
                 </div>
@@ -70,33 +71,33 @@ const Profile = () => {
 
             {/* Right icons */}
             <div className="profile-right">
-              <Link to="/main/profile/settings" className="profile-settings-link">
+              <Link
+                to="/main/profile/settings"
+                className="profile-settings-link"
+              >
                 <i className="bi bi-gear-fill"></i>
               </Link>
 
-              <Link to="/main/profile/settings/edit-profile" className="profile-settings-link">
+              <Link
+                to="/main/profile/settings/edit-profile"
+                className="profile-settings-link"
+              >
                 <i className="bi bi-pencil-square"></i>
               </Link>
-              
             </div>
-
           </div>
 
           {/* Bio Section */}
           <div className="profile-bio">
-            <h4 className="profile-name">{user.username}</h4>
-
-            <p>{user.bio}</p>
+            <p className="bio-p">{user.bio}</p>
 
             {/* softwares */}
             {user.softwares?.map((soft, index) => (
-              <p key={index}>{soft}</p>
+              <p className="software-p" key={index}>{soft}</p>
             ))}
 
             {/* country */}
-            {user.country && <p>{user.country}</p>}
           </div>
-
         </div>
       </div>
 
