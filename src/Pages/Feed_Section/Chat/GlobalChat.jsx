@@ -3,7 +3,7 @@ import "./RFGlobalChat.css";
 import { io } from "socket.io-client";
 import axios from "axios";
 
-// 🔥 CONNECT BACKEND
+//  CONNECT BACKEND
 const socket = io("http://localhost:5002");
 
 export default function GlobalChat() {
@@ -11,7 +11,7 @@ export default function GlobalChat() {
   const [input, setInput] = useState("");
   const chatEndRef = useRef(null);
 
-  // 🔥 GET CURRENT USER (from localStorage / auth)
+  //  GET CURRENT USER (from localStorage / auth)
   const currentUser = JSON.parse(localStorage.getItem("user")) || {
     name: "guest",
     avatar: "https://i.pravatar.cc/100?img=32",
@@ -81,14 +81,14 @@ export default function GlobalChat() {
       }),
     };
 
-    // 🔥 SEND TO SERVER
+    // SEND TO SERVER
     socket.emit("send_message", newMessage);
 
-    // 🔥 INSTANT UI
-    setMessages((prev) => [
-      ...prev,
-      { ...newMessage, isMine: true },
-    ]);
+    // INSTANT UI
+    // setMessages((prev) => [
+    //   ...prev,
+    //   { ...newMessage, isMine: true },
+    // ]);
 
     setInput("");
   };
