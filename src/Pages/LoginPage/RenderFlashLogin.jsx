@@ -5,7 +5,6 @@ import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
 
 const RenderFlashLogin = () => {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -24,20 +23,23 @@ const RenderFlashLogin = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5002/api/auth/login",
-        {
-          email: formData.email,
-          password: formData.password,
-        }
-      );
+      const res = await axios.post("http://localhost:5002/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
 
       // store token
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: res.data.user.username,
+          avatar: res.data.user.avatar,
+        }),
+      );
 
       // redirect after login
       navigate("/main/profile");
-
     } catch (err) {
       console.log(err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed");
@@ -46,7 +48,6 @@ const RenderFlashLogin = () => {
 
   return (
     <div className="rf-login-wrapper">
-
       <TargetCursor
         spinDuration={2}
         hideDefaultCursor
@@ -56,7 +57,6 @@ const RenderFlashLogin = () => {
 
       <div className="rf-login-container">
         <div className="rf-login-card">
-
           <Link className="loginPage-title" to="/">
             <h2 className="rf-login-logo cursor-target">renderFlash</h2>
           </Link>
@@ -64,7 +64,6 @@ const RenderFlashLogin = () => {
           <h2 className="rf-login-title">Sign In</h2>
 
           <form className="rf-login-form" onSubmit={handleSubmit}>
-
             <div className="rf-login-field">
               <input
                 type="email"
@@ -87,13 +86,9 @@ const RenderFlashLogin = () => {
               />
             </div>
 
-            <button
-              type="submit"
-              className="rf-login-btn cursor-target"
-            >
+            <button type="submit" className="rf-login-btn cursor-target">
               Sign In
             </button>
-
           </form>
 
           <div className="rf-login-footer">
@@ -106,7 +101,6 @@ const RenderFlashLogin = () => {
               </span>
             </p>
           </div>
-
         </div>
       </div>
     </div>

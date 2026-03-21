@@ -27,7 +27,8 @@ export default function AccountSettings() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // remove JWT
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login"); // go to login page
   };
 

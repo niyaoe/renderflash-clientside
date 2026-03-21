@@ -1,73 +1,96 @@
 import { useState, useEffect, useRef } from "react";
 import "./RFGlobalChat.css";
+import { io } from "socket.io-client";
+import axios from "axios";
+
+// 🔥 CONNECT BACKEND
+const socket = io("http://localhost:5002");
 
 export default function GlobalChat() {
-
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      user: "snehasuseel",
-      message: "Anyone exporting 4K reels without quality loss?",
-      avatar: "https://i.pravatar.cc/100?img=21",
-      time: "9:12 PM",
-      isMine: false,
-    },
-    {
-      id: 2,
-      user: "niyas.cut",
-      message: "Try 60fps + VBR 2 pass.",
-      avatar: "https://i.pravatar.cc/100?img=32",
-      time: "9:13 PM",
-      isMine: true,
-    },
-      {
-      id: 3,
-      user: "editwizard",
-      message: "Hello guys",
-      avatar: "https://i.pravatar.cc/100?img=24",
-      time: "9:12 PM",
-      isMine: false,
-    },
-    
-  ]);
-
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-
   const chatEndRef = useRef(null);
 
-  /* auto scroll to latest message */
+  // 🔥 GET CURRENT USER (from localStorage / auth)
+  const currentUser = JSON.parse(localStorage.getItem("user")) || {
+    name: "guest",
+    avatar: "https://i.pravatar.cc/100?img=32",
+  };
+
+  /* =========================
+     LOAD OLD MESSAGES (API)
+  ========================== */
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const res = await axios.get("http://localhost:5002/api/messages");
+
+        const formatted = res.data.map((msg) => ({
+          ...msg,
+          isMine: msg.user === currentUser.name,
+        }));
+
+        setMessages(formatted);
+      } catch (err) {
+        console.log("Fetch error:", err);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+
+  /* =========================
+     CONNECT SOCKET
+  ========================== */
+  useEffect(() => {
+    socket.emit("join_global");
+
+    socket.on("receive_message", (data) => {
+      setMessages((prev) => [
+        ...prev,
+        {
+          ...data,
+          isMine: data.user === currentUser.name,
+        },
+      ]);
+    });
+
+    return () => socket.off("receive_message");
+  }, []);
+
+  /* =========================
+     AUTO SCROLL
+  ========================== */
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  /* send message */
+  /* =========================
+     SEND MESSAGE
+  ========================== */
   const sendMessage = () => {
     if (!input.trim()) return;
 
     const newMessage = {
-      id: Date.now(),
-      user: "you",
+      user: currentUser.name,
       message: input,
-      avatar: "https://i.pravatar.cc/100?img=32",
+      avatar: currentUser.avatar,
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
-      isMine: true,
     };
 
-    setMessages((prev) => [...prev, newMessage]);
+    // 🔥 SEND TO SERVER
+    socket.emit("send_message", newMessage);
+
+    // 🔥 INSTANT UI
+    setMessages((prev) => [
+      ...prev,
+      { ...newMessage, isMine: true },
+    ]);
+
     setInput("");
-
-    /*
-    BACKEND READY
-
-    socket.emit("send-message", newMessage)
-
-    or
-
-    axios.post("/api/chat/send", newMessage)
-    */
   };
 
   const handleKeyDown = (e) => {
@@ -76,16 +99,13 @@ export default function GlobalChat() {
 
   return (
     <div className="rf-chat-container">
-
       {/* messages */}
       <div className="rf-chat-messages">
-
-        {messages.map((msg) => (
+        {messages.map((msg, index) => (
           <div
-            key={msg.id}
+            key={index}
             className={`rf-chat-message ${msg.isMine ? "rf-chat-mine" : ""}`}
           >
-
             {!msg.isMine && (
               <img
                 src={msg.avatar}
@@ -95,7 +115,6 @@ export default function GlobalChat() {
             )}
 
             <div className="rf-chat-bubble">
-
               {!msg.isMine && (
                 <span className="rf-chat-user">{msg.user}</span>
               )}
@@ -103,19 +122,15 @@ export default function GlobalChat() {
               <p className="rf-chat-text">{msg.message}</p>
 
               <span className="rf-chat-time">{msg.time}</span>
-
             </div>
-
           </div>
         ))}
 
         <div ref={chatEndRef}></div>
-
       </div>
 
       {/* input */}
       <div className="rf-chat-input-wrapper">
-
         <input
           className="rf-chat-input"
           placeholder="Send anything..."
@@ -124,15 +139,10 @@ export default function GlobalChat() {
           onKeyDown={handleKeyDown}
         />
 
-        <button
-          className="rf-chat-send-btn"
-          onClick={sendMessage}
-        >
+        <button className="rf-chat-send-btn" onClick={sendMessage}>
           <i className="bi bi-send-fill"></i>
         </button>
-
       </div>
-
     </div>
   );
 }

@@ -5,7 +5,6 @@ import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
 
 const SignUpPage = () => {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -31,21 +30,24 @@ const SignUpPage = () => {
     }
 
     try {
-      const res = await axios.post(
-        "http://localhost:5002/api/auth/register",
-        {
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-        }
-      );
+      const res = await axios.post("http://localhost:5002/api/auth/register", {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
 
       // store token
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: res.data.user.username,
+          avatar: res.data.user.avatar,
+        }),
+      );
 
       // redirect to profile/home
       navigate("/main/profile");
-
     } catch (err) {
       console.log(err.response?.data || err.message);
       alert(err.response?.data?.message || "Signup failed");
@@ -54,7 +56,6 @@ const SignUpPage = () => {
 
   return (
     <div className="rf-login-wrapper">
-
       <TargetCursor
         spinDuration={2}
         hideDefaultCursor
@@ -64,7 +65,6 @@ const SignUpPage = () => {
 
       <div className="rf-login-container">
         <div className="rf-login-card">
-
           <Link className="loginPage-title" to="/">
             <h2 className="rf-login-logo cursor-target">renderFlash</h2>
           </Link>
@@ -72,7 +72,6 @@ const SignUpPage = () => {
           <h2 className="rf-login-title">Sign Up</h2>
 
           <form className="rf-login-form" onSubmit={handleSubmit}>
-
             <div className="rf-login-field">
               <input
                 type="text"
@@ -120,7 +119,6 @@ const SignUpPage = () => {
             <button type="submit" className="rf-login-btn cursor-target">
               Sign Up
             </button>
-
           </form>
 
           <div className="rf-login-footer">
@@ -133,7 +131,6 @@ const SignUpPage = () => {
               </span>
             </p>
           </div>
-
         </div>
       </div>
     </div>
