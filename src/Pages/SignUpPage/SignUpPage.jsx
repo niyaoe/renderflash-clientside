@@ -30,7 +30,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5002/api/auth/register", {
+      const res = await axios.post("https://render-flash-server.onrender.com/api/auth/register", {
         username: formData.username,
         email: formData.email,
         password: formData.password,

@@ -4,7 +4,9 @@ import { io } from "socket.io-client";
 import axios from "axios";
 
 //  CONNECT BACKEND
-const socket = io("http://localhost:5002");
+const socket = io("https://render-flash-server.onrender.com", {
+  transports: ["websocket"],
+});
 
 export default function GlobalChat() {
   const [messages, setMessages] = useState([]);
@@ -23,7 +25,9 @@ export default function GlobalChat() {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get("http://localhost:5002/api/messages");
+        const res = await axios.get(
+          "https://render-flash-server.onrender.com/api/messages",
+        );
 
         const formatted = res.data.map((msg) => ({
           ...msg,
@@ -107,17 +111,11 @@ export default function GlobalChat() {
             className={`rf-chat-message ${msg.isMine ? "rf-chat-mine" : ""}`}
           >
             {!msg.isMine && (
-              <img
-                src={msg.avatar}
-                className="rf-chat-avatar"
-                alt="avatar"
-              />
+              <img src={msg.avatar} className="rf-chat-avatar" alt="avatar" />
             )}
 
             <div className="rf-chat-bubble">
-              {!msg.isMine && (
-                <span className="rf-chat-user">{msg.user}</span>
-              )}
+              {!msg.isMine && <span className="rf-chat-user">{msg.user}</span>}
 
               <p className="rf-chat-text">{msg.message}</p>
 

@@ -12,7 +12,7 @@ const Profile = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("http://localhost:5002/api/user/me", {
+        const res = await axios.get("https://render-flash-server.onrender.com/api/user/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
