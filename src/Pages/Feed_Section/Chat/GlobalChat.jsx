@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import "./RFGlobalChat.css";
 import { io } from "socket.io-client";
 import axios from "axios";
+import { API_URL } from "../../../utils/api"
 
 //  CONNECT BACKEND
-const socket = io("https://render-flash-server.onrender.com", {
+const socket = io(`${API_URL}`, {
   transports: ["websocket"],
 });
 
@@ -26,7 +27,7 @@ export default function GlobalChat() {
     const fetchMessages = async () => {
       try {
         const res = await axios.get(
-          "https://render-flash-server.onrender.com/api/messages",
+          `${API_URL}/api/messages`,
         );
 
         const formatted = res.data.map((msg) => ({

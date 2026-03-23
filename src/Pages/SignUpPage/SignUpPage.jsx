@@ -3,6 +3,7 @@ import "../LoginPage/RenderFlashLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
+import { API_URL } from "../../utils/api"
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const SignUpPage = () => {
     }
 
     try {
-      const res = await axios.post("https://render-flash-server.onrender.com/api/auth/register", {
+      const res = await axios.post(`${API_URL}/api/auth/register`, {
         username: formData.username,
         email: formData.email,
         password: formData.password,

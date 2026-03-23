@@ -3,6 +3,7 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 import ProfileTabs from "./ProfileTabs/ProfileTabs";
 import axios from "axios";
+import { API_URL } from "../../utils/api" 
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -12,7 +13,7 @@ const Profile = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.get("https://render-flash-server.onrender.com/api/user/me", {
+        const res = await axios.get(`${API_URL}/api/user/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

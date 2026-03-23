@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./EditProfile.css";
+import { API_URL } from "../../../utils/api" 
 
 export default function EditProfile() {
   const [preview, setPreview] = useState(null);
@@ -203,7 +204,7 @@ export default function EditProfile() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("https://render-flash-server.onrender.com/api/user/me", {
+        const res = await axios.get(`${API_URL}/api/user/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
