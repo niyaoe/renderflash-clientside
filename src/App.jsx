@@ -17,11 +17,25 @@ import ChangePassword from "./Pages/Settings/Change Password/ChangePassword";
 import Notifications from "./Pages/Notification/Notifications";
 import YourPosts from "./Pages/Profile/YourPosts/YourPosts";
 import SavedPosts from "./Pages/Profile/SavedPosts/SavedPosts";
+import { ToastContainer, Bounce } from "react-toastify";
 
 const App = () => {
   return (
     <>
       <div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />

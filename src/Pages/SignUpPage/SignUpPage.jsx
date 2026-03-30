@@ -3,7 +3,8 @@ import "../LoginPage/RenderFlashLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
-import { API_URL } from "../../utils/api"
+import { API_URL } from "../../utils/api";
+import { toast, Bounce } from "react-toastify";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -46,23 +47,35 @@ const SignUpPage = () => {
           avatar: res.data.user.avatar,
         }),
       );
+      toast.success("Login successful", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
 
       // redirect to profile/home
       navigate("/main/profile");
     } catch (err) {
       console.log(err.response?.data || err.message);
       alert(err.response?.data?.message || "Signup failed");
+      toast.error(err.response?.data?.message || "Signup failed ❌");
     }
   };
 
   return (
     <div className="rf-login-wrapper">
-      <TargetCursor
+      {/* <TargetCursor
         spinDuration={2}
         hideDefaultCursor
         parallaxOn
         hoverDuration={0.2}
-      />
+      /> */}
 
       <div className="rf-login-container">
         <div className="rf-login-card">
