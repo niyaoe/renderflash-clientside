@@ -63,7 +63,6 @@ const SignUpPage = () => {
       navigate("/main/profile");
     } catch (err) {
       console.log(err.response?.data || err.message);
-      alert(err.response?.data?.message || "Signup failed");
       toast.error(err.response?.data?.message || "Signup failed ❌");
     }
   };
