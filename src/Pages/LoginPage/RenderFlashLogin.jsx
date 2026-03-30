@@ -5,16 +5,22 @@ import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { toast, Bounce } from "react-toastify";
+import { verifyUser } from "../../utils/auth";
 
 const RenderFlashLogin = () => {
   const navigate = useNavigate();
 
+  //auth check real
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const check = async () => {
+      const user = await verifyUser();
 
-    if (token) {
-      navigate("/main/profile");
-    }
+      if (user) {
+        navigate("/main/profile");
+      }
+    };
+
+    check();
   }, []);
 
   const [formData, setFormData] = useState({
