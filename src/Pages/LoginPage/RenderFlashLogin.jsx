@@ -9,6 +9,14 @@ import { toast, Bounce } from "react-toastify";
 const RenderFlashLogin = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      navigate("/main/profile");
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -60,12 +68,12 @@ const RenderFlashLogin = () => {
 
   return (
     <div className="rf-login-wrapper">
-      {/* <TargetCursor
+      <TargetCursor
         spinDuration={2}
         hideDefaultCursor
         parallaxOn
         hoverDuration={0.2}
-      /> */}
+      />
 
       <div className="rf-login-container">
         <div className="rf-login-card">

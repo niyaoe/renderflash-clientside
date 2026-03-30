@@ -18,6 +18,7 @@ import Notifications from "./Pages/Notification/Notifications";
 import YourPosts from "./Pages/Profile/YourPosts/YourPosts";
 import SavedPosts from "./Pages/Profile/SavedPosts/SavedPosts";
 import { ToastContainer, Bounce } from "react-toastify";
+import ProtectedRoute from "./protect/ProtectedRoute";
 
 const App = () => {
   return (
@@ -43,7 +44,14 @@ const App = () => {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/about" element={<About />} />
 
-            <Route path="/main" element={<RenderFlashLayout />}>
+            <Route
+              path="/main"
+              element={
+                <ProtectedRoute>
+                  <RenderFlashLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Feed />} />
               <Route path="feed" element={<Feed />} />
               <Route path="search" element={<Search />} />
