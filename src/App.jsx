@@ -7,7 +7,7 @@ import About from "./Pages/About/About";
 import Feed from "./Pages/Feed_Section/Feed/Feed";
 import RenderFlashLayout from "./Pages/Feed_Section/Layout/RenderFlashLayout";
 import Search from "./Pages/Feed_Section/Search/Search";
-import GlobalChat from "./Pages/Feed_Section/Chat/GlobalChat";
+import GlobalChat from "./Pages/Feed_Section/Chat/GlobalChat/GlobalChat";
 import Profile from "./Pages/Profile/Profile";
 import SettingsLayout from "./Pages/Settings/SettingsLayout/SettingsLayout";
 import AccountSettings from "./Pages/Settings/AccountInfo/AccountSettings";

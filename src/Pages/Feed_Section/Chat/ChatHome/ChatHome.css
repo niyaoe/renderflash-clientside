@@ -1,0 +1,43 @@
+.rf-chat-home {
+  padding: 20px;
+}
+
+.rf-chat-home-title {
+  margin-bottom: 20px;
+}
+
+.rf-chat-home-options {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rf-chat-card-option {
+  flex: 1;
+  min-width: 200px;
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rf-chat-card-option:hover {
+  background: #1c1c1c;
+}
+
+.rf-chat-card-option i {
+  font-size: 24px;
+  color: #621eff;
+  margin-bottom: 10px;
+}
+
+.rf-chat-card-option h3 {
+  margin: 0;
+}
+
+.rf-chat-card-option p {
+  color: #aaa;
+  font-size: 13px;
+}

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./RFGlobalChat.css";
 import { io } from "socket.io-client";
 import axios from "axios";
-import { API_URL } from "../../../utils/api"
+import { API_URL } from "../../../../utils/api"
 
 //  CONNECT BACKEND
 const socket = io(`${API_URL}`, {
