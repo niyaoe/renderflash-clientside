@@ -19,6 +19,9 @@ import YourPosts from "./Pages/Profile/YourPosts/YourPosts";
 import SavedPosts from "./Pages/Profile/SavedPosts/SavedPosts";
 import { ToastContainer, Bounce } from "react-toastify";
 import ProtectedRoute from "./protect/ProtectedRoute";
+import ChatHome from "./Pages/Feed_Section/Chat/ChatHome/ChatHome";
+import PrivateRoomHome from "./Pages/Feed_Section/Chat/PrivateChat/PrivateRoomHome";
+import RoomChat from "./Pages/Feed_Section/Chat/PrivateChat/RoomChat";
 
 const App = () => {
   return (
@@ -55,7 +58,10 @@ const App = () => {
               <Route index element={<Feed />} />
               <Route path="feed" element={<Feed />} />
               <Route path="search" element={<Search />} />
-              <Route path="chat" element={<GlobalChat />} />
+              <Route path="chat" element={<ChatHome />} />
+              <Route path="chat/global" element={<GlobalChat />} />
+              <Route path="chat/private" element={<PrivateRoomHome />} />
+              <Route path="chat/private/:roomId" element={<RoomChat />} />
               <Route path="profile" element={<Profile />}>
                 <Route index element={<Navigate to="posts" />} />
                 <Route path="posts" element={<YourPosts />} />
