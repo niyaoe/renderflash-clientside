@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./RenderFlashLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import TargetCursor from "../../Blits/TargetCursor";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { toast, Bounce } from "react-toastify";
-import { verifyUser } from "../../utils/auth";
 
 const RenderFlashLogin = () => {
   const navigate = useNavigate();
-
-  //auth check real
-  useEffect(() => {
-    const check = async () => {
-      const user = await verifyUser();
-
-      if (user) {
-        navigate("/main/profile");
-      }
-    };
-
-    check();
-  }, []);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -68,7 +54,7 @@ const RenderFlashLogin = () => {
       navigate("/main/profile");
     } catch (err) {
       console.log(err.response?.data || err.message);
-      toast.error(err.response?.data?.message || "Login failed ❌");
+      toast.error(err.response?.data?.message || "Login failed");
     }
   };
 

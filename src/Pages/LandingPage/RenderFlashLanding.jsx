@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./RenderFlashLanding.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TargetCursor from "../../Blits/TargetCursor";
 import GradientText from "../../componentblits/GradientText";
 import { useTranslation } from "react-i18next";
+import { verifyUser } from "../../utils/auth";
 
 const RenderFlashLanding = () => {
   const { t, i18n } = useTranslation();
+
+  const navigate = useNavigate();
+
+  //auth check real
+  useEffect(() => {
+    const check = async () => {
+      const user = await verifyUser();
+
+      if (user) {
+        navigate("/main/profile");
+      }
+    };
+
+    check();
+  }, []);
 
   return (
     <div className="rf-wrapper">
