@@ -69,7 +69,7 @@ export default function RoomChat() {
     <div className="rf-room-chat-container">
 
       <div className="rf-room-header">
-        <h3>Room: {roomId}</h3>
+        <h3>Room: <span style={{color:"yellow"}}>{roomId}</span></h3>
       </div>
 
       <div className="rf-room-messages-container">
@@ -103,7 +103,7 @@ export default function RoomChat() {
           className="rf-room-send-btn"
           onClick={sendMessage}
         >
-          Send
+          <i className="bi bi-send-fill"></i>
         </button>
       </div>
 

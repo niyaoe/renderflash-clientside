@@ -28,7 +28,7 @@ export default function ChatHome() {
           onClick={() => navigate("/main/chat/private")}
         >
           <i className="bi bi-person-lines-fill"></i>
-          <h3>Private Chat</h3>
+          <h3>Rooms</h3>
           <p>Chat with your friends</p>
         </div>
 
