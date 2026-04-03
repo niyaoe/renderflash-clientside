@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import "./RFRoom.css";
+import axios from "axios";
 
 export default function RoomChat() {
   const { roomId } = useParams();
@@ -13,6 +14,27 @@ export default function RoomChat() {
 
   // 🔥 create socket inside component
   const socket = useRef(null);
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/messages/${roomId}`,
+        );
+
+        const formatted = res.data.map((msg) => ({
+          ...msg,
+          isMine: msg.user === user?.name,
+        }));
+
+        setMessages(formatted);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchMessages();
+  }, [roomId]);
 
   /* =========================
      CONNECT + JOIN ROOM
@@ -67,9 +89,10 @@ export default function RoomChat() {
 
   return (
     <div className="rf-room-chat-container">
-
       <div className="rf-room-header">
-        <h3>Room: <span style={{color:"yellow"}}>{roomId}</span></h3>
+        <h3>
+          Room: <span style={{ color: "yellow" }}>{roomId}</span>
+        </h3>
       </div>
 
       <div className="rf-room-messages-container">
@@ -80,9 +103,7 @@ export default function RoomChat() {
               msg.isMine ? "rf-room-message-mine" : ""
             }`}
           >
-            {!msg.isMine && (
-              <span className="rf-room-user">{msg.user}</span>
-            )}
+            {!msg.isMine && <span className="rf-room-user">{msg.user}</span>}
 
             <p>{msg.message}</p>
 
@@ -99,14 +120,10 @@ export default function RoomChat() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type message..."
         />
-        <button
-          className="rf-room-send-btn"
-          onClick={sendMessage}
-        >
+        <button className="rf-room-send-btn" onClick={sendMessage}>
           <i className="bi bi-send-fill"></i>
         </button>
       </div>
-
     </div>
   );
 }
