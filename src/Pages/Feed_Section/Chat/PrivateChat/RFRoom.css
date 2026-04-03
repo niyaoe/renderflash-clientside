@@ -122,3 +122,44 @@
 .rf-room-send-btn:hover {
   background: #2a2a2a;
 }
+
+
+
+
+
+
+.rf-room-list {
+  margin-top: 25px;
+}
+
+.rf-room-list-title {
+  margin-bottom: 10px;
+}
+
+.rf-room-item {
+  padding: 10px;
+  border: 1px solid #222;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rf-room-item:hover {
+  background: #1c1c1c;
+}
+
+.rf-room-code {
+  font-weight: 600;
+}
+
+.rf-room-owner {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.rf-room-empty {
+  color: #888;
+  font-size: 13px;
+}
