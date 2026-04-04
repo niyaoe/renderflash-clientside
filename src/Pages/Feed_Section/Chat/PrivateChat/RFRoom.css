@@ -163,3 +163,27 @@
   color: #888;
   font-size: 13px;
 }
+
+
+
+
+
+.rf-room-users {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  /* border-bottom: 1px solid #222; */
+  overflow-x: auto;
+}
+
+.rf-room-user-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rf-room-user-item img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}

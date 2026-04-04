@@ -8,6 +8,7 @@ export default function RoomChat() {
   const { roomId } = useParams();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [roomUsers, setRoomUsers] = useState([]);
   const bottomRef = useRef();
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -42,7 +43,14 @@ export default function RoomChat() {
   useEffect(() => {
     socket.current = io(import.meta.env.VITE_API_URL);
 
-    socket.current.emit("join_room", roomId);
+    socket.current.emit("join_room", {
+      roomId,
+      user,
+    });
+
+    socket.current.on("room_users", (users) => {
+      setRoomUsers(users);
+    });
 
     socket.current.on("receive_room_message", (data) => {
       setMessages((prev) => [
@@ -93,6 +101,14 @@ export default function RoomChat() {
         <h3>
           Room: <span style={{ color: "yellow" }}>{roomId}</span>
         </h3>
+        <div className="rf-room-users">
+          {roomUsers.map((u) => (
+            <div key={u.id} className="rf-room-user-item">
+              <img src={u.avatar} />
+              <span>{u.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="rf-room-messages-container">
