@@ -104,8 +104,7 @@ export default function RoomChat() {
         <div className="rf-room-users">
           {roomUsers.map((u) => (
             <div key={u.id} className="rf-room-user-item">
-              <img src={u.avatar} />
-              <span>{u.name}</span>
+              <span className="onlineuser-name">{u.name},</span>
             </div>
           ))}
         </div>

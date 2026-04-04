@@ -84,6 +84,9 @@
   margin-bottom: 8px;
   max-width: 65%;
 }
+.rf-room-user{
+  font-weight: 600;
+}
 
 /* my message */
 .rf-room-message-mine {
@@ -171,7 +174,7 @@
 .rf-room-users {
   display: flex;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   /* border-bottom: 1px solid #222; */
   overflow-x: auto;
 }
@@ -187,3 +190,8 @@
   height: 28px;
   border-radius: 50%;
 }
+
+.onlineuser-name{
+  color: #621eff;
+}
+
